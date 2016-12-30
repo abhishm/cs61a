@@ -1,0 +1,36 @@
+(define (fib n)
+  (define (fib-helper n first-fib second-fib)
+    (if (= n 2)
+      (+ first-fib second-fib)
+      (fib-helper (- n 1) second-fib (+ first-fib second-fib))
+    )
+  )
+  (if (< n 2)
+    n
+    (fib-helper n 0 1)
+  )
+)
+
+(define (reverse lst)
+  (define (reverse-helper lst-first lst-rest)
+    (if (null? lst-first)
+      lst-rest
+      (reverse-helper (cdr lst-first) (cons (car lst-first) lst-rest))
+    )
+  )
+  (reverse-helper lst nil)
+)
+
+(define (insert n lst)
+  (define (insert-helper n lst new-lst)
+    (cond
+      ((null? lst) new-lst)
+      ((>= (car lst) n) ())
+    )
+  )
+  (cond
+    ((null? lst) (cons n nil))
+    ((>= (car lst) n) (cons n lst))
+    (else (cons (car lst) (insert n (cdr lst))))
+  )
+)
